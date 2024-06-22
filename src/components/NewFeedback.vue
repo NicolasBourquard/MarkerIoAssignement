@@ -47,9 +47,9 @@ const message = ref('');
 
 const feedbacksStore = useFeedbacksStore();
 
-function sendFeedback(){
+async function sendFeedback(){
     let feedback: Feedback = { name: name.value, email: email.value, type: type.value, title: title.value, message: message.value, date: new Date() };
-    feedbacksStore.newFeedback(feedback);
+    await feedbacksStore.newFeedback(feedback);
 }
 
 </script>

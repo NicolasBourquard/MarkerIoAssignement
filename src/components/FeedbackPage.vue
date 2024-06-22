@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import AllFeedback from './AllFeedback.vue'
 import NewFeedback from './NewFeedback.vue'
-import logo from '../assets/logo.svg'
+import logo from '@/assets/logo.svg'
 import { ref } from 'vue'
 
 const tab = ref('allFeedback');
