@@ -1,3 +1,4 @@
+/* Feedback interface + utility functions */
 export type FeedbackType = 'Bug' | 'Suggestion';
 
 export interface Feedback{

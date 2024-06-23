@@ -1,4 +1,4 @@
-/*   Call this code to generate random feedback in the database */
+/*   Call this code to generate 100 random feedbacks in the database */
 
 import mongoose from 'mongoose';
 
@@ -10,6 +10,7 @@ mongoose.connect("mongodb://localhost:27017/feedback").then(
 import { Feedback, feedbackModel } from './feedback/feedbackModel';
 
 
+//Use same message on every generated feedbacks
 const MESSAGE = `Hi Team,\n
 
 I encountered a bug in [software/product name] version [version number]. When I try to save a file, the application crashes. Here’s what happens:\n

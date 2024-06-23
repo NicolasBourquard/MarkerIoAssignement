@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+/* Selectable preview of feedback displayed in the list */
 import bug from '@/assets/bug.svg';
 import suggestion from '@/assets/suggestion.svg';
 import { Feedback, timeAgo } from '../../types/feedback';

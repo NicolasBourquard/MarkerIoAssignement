@@ -1,3 +1,4 @@
+/*  JOI validation of feedback data sent by clients */
 import joi from 'joi';
 import { Feedback } from './feedbackModel';
 

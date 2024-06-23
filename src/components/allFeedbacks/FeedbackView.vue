@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+/* Display whole feedback */
 import { Feedback, timeAgo } from '../../types/feedback';
 import bug from '@/assets/bug.svg';
 import suggestion from '@/assets/suggestion.svg';

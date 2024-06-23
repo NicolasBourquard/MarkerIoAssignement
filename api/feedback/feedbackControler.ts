@@ -1,3 +1,5 @@
+/*  API methods (Get & Post feedback) */
+
 import { Request, Response, NextFunction } from "express";
 import { Feedback, FeedbackType, feedbackModel } from './feedbackModel'; 
 import { validateFeedback } from "./feedbackValidator";
@@ -12,8 +14,10 @@ async function get(req: Request, res: Response, next: NextFunction){
     }
 }
 
+
 async function post(req: Request, res: Response, next: NextFunction){
     try{
+        //Validate feedback sent from client and save it.
         const valid = validateFeedback(req.body);
         if(valid.error)
             return res.status(400).send(valid.error);

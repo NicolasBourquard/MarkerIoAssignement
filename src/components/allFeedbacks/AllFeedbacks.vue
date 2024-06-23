@@ -6,6 +6,7 @@
 </template>
 
 <script setup lang="ts">
+/* Display the list of feedbacks and the view of the current selected feedback */
 import { Feedback } from '../../types/feedback';
 import FeedbackList from './FeedbackList.vue'
 import FeedbackView from './FeedbackView.vue'

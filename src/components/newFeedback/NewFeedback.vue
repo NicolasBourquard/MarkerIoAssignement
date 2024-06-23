@@ -41,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+/* Form to add new feedbacks */
 import { ref } from 'vue'
 import { Feedback, FeedbackType } from '../../types/feedback';
 import { useFeedbacksStore } from '../../stores/feedbacksStore';
@@ -53,6 +54,7 @@ const message = ref('');
 
 const feedbacksStore = useFeedbacksStore();
 
+//Reset form to empty values
 function discard(){
     name.value = '';
     email.value = '';

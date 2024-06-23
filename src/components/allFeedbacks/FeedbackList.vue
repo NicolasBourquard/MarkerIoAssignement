@@ -14,7 +14,7 @@ import FeedbackPreview from './FeedbackPreview.vue';
 
 const feedbacksStore = useFeedbacksStore();
 
-const selected = defineModel<Feedback>(); //Selected feedback is a v-model
+const selected = defineModel<Feedback>(); //Selected feedback is a v-model. Parent component need to know which feedback is selected to display it
 
 function selectFeedback(feedback: Feedback){
     selected.value = feedback;

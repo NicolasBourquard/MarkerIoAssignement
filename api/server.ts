@@ -17,6 +17,8 @@ app.use(cors({ origin: true, credentials: true }));
 
 const PORT = process.env.PORT || 3000;
 
+
+//routes
 app.get('/api/feedback', feedbackControler.get);
 
 app.post('/api/feedback', feedbackControler.post);

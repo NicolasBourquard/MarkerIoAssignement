@@ -21,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+/* Handle tabs between allfeedbacks display and the form for new feedbacks */
 import AllFeedback from './allFeedbacks/AllFeedbacks.vue'
 import NewFeedback from './newFeedback/NewFeedback.vue'
 import logo from '@/assets/logo.png'
