@@ -42,8 +42,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Feedback, FeedbackType } from '../types/feedback';
-import { useFeedbacksStore } from '../stores/feedbacksStore';
+import { Feedback, FeedbackType } from '../../types/feedback';
+import { useFeedbacksStore } from '../../stores/feedbacksStore';
 
 const name = ref('');
 const email = ref('');

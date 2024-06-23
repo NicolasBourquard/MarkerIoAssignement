@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { Feedback } from '../types/feedback';
+import { Feedback } from '../../types/feedback';
 import FeedbackList from './FeedbackList.vue'
 import FeedbackView from './FeedbackView.vue'
 import { ref } from 'vue'

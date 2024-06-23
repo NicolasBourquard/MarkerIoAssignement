@@ -21,8 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import AllFeedback from './AllFeedback.vue'
-import NewFeedback from './NewFeedback.vue'
+import AllFeedback from './allFeedbacks/AllFeedbacks.vue'
+import NewFeedback from './newFeedback/NewFeedback.vue'
 import logo from '@/assets/logo.png'
 import { ref } from 'vue'
 

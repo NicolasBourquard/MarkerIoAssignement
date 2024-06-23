@@ -8,7 +8,7 @@ mongoose.connect("mongodb://localhost:27017/feedback").then(
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import * as feedbackControler from './feedbackControler.ts';
+import * as feedbackControler from './feedback/feedbackControler.ts';
 
 const app = express();
 app.use(bodyParser.json());

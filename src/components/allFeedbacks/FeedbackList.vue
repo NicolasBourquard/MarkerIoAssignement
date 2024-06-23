@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full bg-[#F8FAFC]">
+    <div class="h-full bg-[#F8FAFC] overflow-y-auto">
         <template v-for="(feedback, i) in feedbacksStore.feedbacks" :key="i">
             <FeedbackPreview :feedback="feedback" :selected="selected === feedback" @click="selectFeedback(feedback)"/>
         </template>
@@ -8,8 +8,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useFeedbacksStore } from '../stores/feedbacksStore';
-import { Feedback } from '../types/feedback';
+import { useFeedbacksStore } from '../../stores/feedbacksStore';
+import { Feedback } from '../../types/feedback';
 import FeedbackPreview from './FeedbackPreview.vue';
 
 const feedbacksStore = useFeedbacksStore();

@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import bug from '@/assets/bug.svg';
 import suggestion from '@/assets/suggestion.svg';
-import { Feedback, timeAgo } from '../types/feedback';
+import { Feedback, timeAgo } from '../../types/feedback';
 
 const props = defineProps<{
     feedback: Feedback,
