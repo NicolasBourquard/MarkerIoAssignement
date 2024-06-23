@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row">
+    <div class="flex flex-row h-full">
         <FeedbackList v-model="selectedFeedback" class="basis-1/3"/>
         <FeedbackView :feedback="selectedFeedback" class="basis-2/3"/>
     </div>

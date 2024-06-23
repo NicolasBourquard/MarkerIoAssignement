@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full">
+    <div class="h-full bg-[#F8FAFC]">
         <template v-for="(feedback, i) in feedbacksStore.feedbacks" :key="i">
             <FeedbackPreview :feedback="feedback" :selected="selected === feedback" @click="selectFeedback(feedback)"/>
         </template>
