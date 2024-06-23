@@ -1,6 +1,6 @@
 <template>
     <div class="h-screen">
-        <nav class="flex items-center justify-between flex-wrap bg-[#F8FAFC] p-1 border-b-1 border-solid border-[#E2E8F0]">
+        <nav class="flex items-center justify-between flex-wrap bg-slate-50 p-1 border-b border-slate-150">
             <div>
                 <img :src="logo"/>
             </div>

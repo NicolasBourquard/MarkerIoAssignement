@@ -9,7 +9,7 @@
                 <p class="font-medium text-[12px] text-slate-500">{{  timeAgo(feedback) }} ago</p>
                 <h1 class="font-medium text-[24px] text-slate-800">{{ feedback.title }}</h1>
                 <p class="font-medium text-[12px] text-slate-500">{{  feedback.name }} ( {{ feedback.email }})</p>
-                <p class="font-normal text-[16px] text-slate-800 mt-5"> {{  feedback.message }}</p>
+                <p class="font-normal text-[16px] text-slate-800 mt-5 whitespace-pre"> {{  feedback.message }}</p>
             </div>
         </div>
     </div>

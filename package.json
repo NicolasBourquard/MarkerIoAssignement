@@ -17,7 +17,8 @@
     "mande": "^2.0.9",
     "mongoose": "^8.4.3",
     "pinia": "^2.1.7",
-    "vue": "^3.4.29"
+    "vue": "^3.4.29",
+    "vue-toast-notification": "^3.1.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
