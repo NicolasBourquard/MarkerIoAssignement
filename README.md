@@ -5,15 +5,21 @@
 #### Frontend
 
 Frontend code is inside the src folder
+
 Page that save new feedback with input validation (NewFeedback.vue in newFeedback folder)
+
 List of selectable feedbacks that can be sorted and filtered with pagination (in allFeedbacks folder)
 
 #### Backend
 
 Backend code is inside the api folder
+
 Post method on /api/feedback to store a new feedback in the database (with validation)
+
 Get method on /api/feedback to get all feedbacks
-generateRandomFeedback.ts is a utility file to generate 100 random feedback for testing purposes
+
+generateRandomFeedback.ts is a utility file to generate 100 random feedbacks for testing purposes
+
 MongoDB database is named feedback
 
 ### Setup
