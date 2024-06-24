@@ -19,19 +19,26 @@
                 </select>
             </div>
         </div>
+
         <div class="flex-grow overflow-y-auto">
-            <template v-for="(feedback, i) in feedbacksStore.feedbacks" :key="i">
-                <FeedbackPreview v-show="showFeedback(feedback)" :feedback="feedback" :selected="selected === feedback" @click="selectFeedback(feedback)"/>
+            <template v-for="(feedback, i) in displayedFeedbacks" :key="i">
+                <FeedbackPreview :feedback="feedback" :selected="selected === feedback" @click="selectFeedback(feedback)"/>
             </template>
+        </div>
+
+
+        <div class="border-t p-5">
+            <Pagination v-model="page" :count="Math.ceil(feedbacksStore.feedbacks.length/ITEMS_PER_PAGES)"/>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, computed } from 'vue';
 import { useFeedbacksStore } from '../../stores/feedbacksStore';
 import { Feedback } from '../../types/feedback';
 import FeedbackPreview from './FeedbackPreview.vue';
+import Pagination from './Pagination.vue';
 
 const feedbacksStore = useFeedbacksStore();
 
@@ -42,20 +49,16 @@ function selectFeedback(feedback: Feedback){
 }
 
 
-//Filtering
+//Filtering, sorting and pagination
 const filterBy = ref('');
-
-//return true if feedback is allowed to be showed depending of the filter
-function showFeedback(feedback: Feedback){
-    return !filterBy.value || feedback.type === filterBy.value;
-}
-
-//Sorting
 const sortBy = ref('');
+const page = ref(1);
+const ITEMS_PER_PAGES = 20;
 
-watch(sortBy, (newSortBy) => {
-    feedbacksStore.sortFeedbacks(newSortBy);
-});
+
+//Use computed value for the list of feedback to display to only call getDisplayedFeedbacks when filterBy or SortBy change
+const displayedFeedbacks = computed(() => { return feedbacksStore.getDisplayedFeedbacks(filterBy.value, sortBy.value, page.value, ITEMS_PER_PAGES)});
+
 
 
 </script>

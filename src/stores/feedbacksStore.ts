@@ -25,7 +25,8 @@ export const useFeedbacksStore = defineStore('feedbacks', () => {
         }
     }
 
-    async function getFeedbacks(){
+    //Load all feedbacks
+    async function loadFeedbacks(){
         try{
             let res = await api.get<Feedback[]>();
             for(let feedback of res)  //Date is in a string format instead of a date object when retrieving the feedbacks from the API. 
@@ -51,11 +52,40 @@ export const useFeedbacksStore = defineStore('feedbacks', () => {
     }
 
 
+    //Get feedbacks to display in the list based on the filter, sorting and page
+    function getDisplayedFeedbacks(filterBy = '', sortBy = '', page = 1, perPage = 20){
+        //Create a shallow copy and filter if needed
+        let filteredFeedbacks = feedbacks.value.filter(feedback => !filterBy || feedback.type === filterBy);
+
+        //Sort the filtered feedback if needed
+        if(sortBy === 'date')
+            filteredFeedbacks.sort((f1, f2) => f2.date.getTime() - f1.date.getTime());
+        if(sortBy === 'name')
+            filteredFeedbacks.sort((f1, f2) => f1.name.localeCompare(f2.name));
+        if(sortBy === 'title')
+            filteredFeedbacks.sort((f1, f2) => f1.title.localeCompare(f2.title));
+
+        const nbPages = Math.ceil(filteredFeedbacks.length / perPage);
+        if(page > nbPages || page < 0) //if page requested is not valid, return full list
+            return filteredFeedbacks;
+
+        return filteredFeedbacks.slice((page-1)*perPage, Math.min(page*perPage-1, filteredFeedbacks.length));
+    }
+
+    //Get number of filtered feedbacks 
+    function getFilteredFeedbacksCount(filterBy = ''){
+        if(!filterBy)
+            return feedbacks.value.length;
+
+        return feedbacks.value.filter(feedback => feedback.type === filterBy).length;
+    }
 
 
 
 
-    getFeedbacks(); //Call get feedbacks on init
+
+
+    loadFeedbacks(); //Call get feedbacks on init
     
-    return { feedbacks, newFeedback, getFeedbacks, sortFeedbacks };
+    return { feedbacks, newFeedback, getDisplayedFeedbacks, getFilteredFeedbacksCount, sortFeedbacks };
 });
