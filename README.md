@@ -19,13 +19,13 @@ MongoDB database is named feedback
 ### Setup
 
 Install dependencies
-    npm install
+`npm install`
 
 Run the backend
-    npm run api 
+`npm run api`
 
 Run the frontend with vite
-    npm run dev
+`npm run dev`
 
 Optional: Generate random feedback in the database
-    npm run generate-feedbacks
+`npm run generate-feedbacks`
