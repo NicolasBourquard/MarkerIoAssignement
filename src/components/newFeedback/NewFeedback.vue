@@ -27,6 +27,10 @@
                     <textarea id="message" v-model="message" class="border rounded w-full py-2 px-3 text-gray-700 min-h-[166px]"/>
                 </div>
 
+                <div v-show="error">
+                    <p class="text-red-500 text-center">{{ error }}</p>
+                </div>
+
                 <div class="flex justify-end">
                     <button @click="discard()" class="bg-[#EAF0F6] text-[#1E293B] text-[14px] font-bold py-2 px-4 rounded mr-3" type="button">
                         Discard
@@ -52,7 +56,31 @@ const type = ref<FeedbackType>('Bug');
 const title = ref('');
 const message = ref('');
 
+const error = ref('');
+
 const feedbacksStore = useFeedbacksStore();
+
+
+//Regex check that email is correct
+function checkMail(email: string){
+    return (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+}
+
+
+//Validate feedback data (make sure fields arent empty and that the email is correct) and display an error message if there is a problem
+function validateFeedback(){
+    error.value = '';
+    if(!name.value)
+        error.value = 'Please enter a name';
+    else if(!checkMail(email.value))
+        error.value = 'Please enter a valid email';
+    else if(!title.value)
+        error.value = 'Please enter a title';
+    else if(!message.value)
+        error.value = 'Please enter a message';
+
+    return error.value === ''; //If there is no error found during validation, error message should be empty
+}
 
 //Reset form to empty values
 function discard(){
@@ -60,10 +88,16 @@ function discard(){
     email.value = '';
     title.value = '';
     message.value = '';
+
+    error.value = '';
 }
 
 async function sendFeedback(){
     let feedback: Feedback = { name: name.value, email: email.value, type: type.value, title: title.value, message: message.value, date: new Date() };
+
+    if(!validateFeedback())
+        return;
+
     if(await feedbacksStore.newFeedback(feedback)){
         discard(); //Discard current feedback data once it's been added and saved on the backend
     }
