@@ -1,13 +1,32 @@
 <template>
-    <div class="h-full bg-[#F8FAFC] overflow-y-auto">
-        <template v-for="(feedback, i) in feedbacksStore.feedbacks" :key="i">
-            <FeedbackPreview :feedback="feedback" :selected="selected === feedback" @click="selectFeedback(feedback)"/>
-        </template>
+    <div class="h-full bg-[#F8FAFC] flex flex-col">
+        <div class="border-b flex items-center justify-between flex-wrap p-3">
+            <div>
+                <label class="font-medium text-[12px] text-slate-500 mr-2">Filter</label>
+                <select class="font-medium text-[12px] text-slate-500 p-0.5 bg-[#EAF0F6]">
+                    <option>Reporter</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="font-medium text-[12px] text-slate-500 mr-2">Sort</label>
+                <select v-model="sortBy" class="font-medium text-[12px] text-slate-500 p-0.5 bg-[#EAF0F6]">
+                    <option value="date">Date</option>
+                    <option value="name">Name</option>
+                    <option value="title">Title</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex-grow overflow-y-auto">
+            <template v-for="(feedback, i) in feedbacksStore.feedbacks" :key="i">
+                <FeedbackPreview :feedback="feedback" :selected="selected === feedback" @click="selectFeedback(feedback)"/>
+            </template>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useFeedbacksStore } from '../../stores/feedbacksStore';
 import { Feedback } from '../../types/feedback';
 import FeedbackPreview from './FeedbackPreview.vue';
@@ -19,6 +38,13 @@ const selected = defineModel<Feedback>(); //Selected feedback is a v-model. Pare
 function selectFeedback(feedback: Feedback){
     selected.value = feedback;
 }
+
+
+const sortBy = ref('');
+
+watch(sortBy, (newSortBy) => {
+    feedbacksStore.sortFeedbacks(newSortBy);
+});
 
 
 </script>

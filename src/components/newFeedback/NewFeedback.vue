@@ -1,6 +1,6 @@
 <template>
     <div class="bg-slate-50 h-full mt-5 pt-20">
-        <div class="max-w-[773px] m-auto bg-white rounded">
+        <div class="max-w-[773px] m-auto bg-white rounded shadow">
             <h1 class="font-medium text-[24px] text-slate-800 border-b border-slate-150 p-2 pl-5">Add new feedback</h1>
             <form class="p-10 pt-5">
                 <div class="mb-4 max-w-[300px]">
@@ -32,10 +32,10 @@
                 </div>
 
                 <div class="flex justify-end">
-                    <button @click="discard()" class="bg-[#EAF0F6] text-[#1E293B] text-[14px] font-bold py-2 px-4 rounded mr-3" type="button">
+                    <button @click="discard()" class="bg-[#EAF0F6] text-slate-800 text-[14px] font-bold py-2 px-4 rounded mr-3" type="button">
                         Discard
                     </button>
-                    <button @click="sendFeedback" class="bg-[#34D399] text-white text-[14px] font-bold py-2 px-4 rounded" type="button">
+                    <button @click="sendFeedback" class="bg-emerald-400 text-white text-[14px] font-bold py-2 px-4 rounded" type="button">
                         Send feedback
                     </button>
                 </div>

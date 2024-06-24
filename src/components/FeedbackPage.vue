@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen">
+    <div class="h-screen flex flex-col">
         <nav class="flex items-center justify-between flex-wrap bg-slate-50 p-1 border-b border-slate-150">
             <div>
                 <img :src="logo"/>
@@ -13,7 +13,7 @@
                 </button>
             </div>
         </nav>
-        <section class="h-full">
+        <section class="flex-grow overflow-y-auto">
             <AllFeedback v-show="tab === 'allFeedback'"/>
             <NewFeedback v-show="tab === 'newFeedback'"/>
         </section>
@@ -31,8 +31,8 @@ const tab = ref('allFeedback');
 
 function buttonClass(selected: boolean){
     if(selected)
-        return 'bg-[#34D399] text-white';
-    return 'bg-[#EAF0F6] text-[#1E293B]';
+        return 'bg-emerald-400 text-white';
+    return 'bg-[#EAF0F6] text-slate-800';
 }
 
 

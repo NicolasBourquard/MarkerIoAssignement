@@ -38,7 +38,24 @@ export const useFeedbacksStore = defineStore('feedbacks', () => {
         }
     }
 
-    getFeedbacks();
+
+
+    //Sort feedbacks by field
+    function sortFeedbacks(sortBy: string){
+        if(sortBy === 'date')
+            feedbacks.value.sort((f1, f2) => f2.date.getTime() - f1.date.getTime());
+        if(sortBy === 'name')
+            feedbacks.value.sort((f1, f2) => f1.name.localeCompare(f2.name));
+        if(sortBy === 'title')
+            feedbacks.value.sort((f1, f2) => f1.title.localeCompare(f2.title));
+    }
+
+
+
+
+
+
+    getFeedbacks(); //Call get feedbacks on init
     
-    return { feedbacks, newFeedback, getFeedbacks };
+    return { feedbacks, newFeedback, getFeedbacks, sortFeedbacks };
 });
