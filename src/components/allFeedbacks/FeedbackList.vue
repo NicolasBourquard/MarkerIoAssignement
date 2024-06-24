@@ -3,8 +3,10 @@
         <div class="border-b flex items-center justify-between flex-wrap p-3">
             <div>
                 <label class="font-medium text-[12px] text-slate-500 mr-2">Filter</label>
-                <select class="font-medium text-[12px] text-slate-500 p-0.5 bg-[#EAF0F6]">
-                    <option>Reporter</option>
+                <select v-model="filterBy" class="font-medium text-[12px] text-slate-500 p-0.5 bg-[#EAF0F6]">
+                    <option value="">None</option>
+                    <option value="Bug">Bug</option>
+                    <option value="Suggestion">Suggestion</option>
                 </select>
             </div>
 
@@ -19,7 +21,7 @@
         </div>
         <div class="flex-grow overflow-y-auto">
             <template v-for="(feedback, i) in feedbacksStore.feedbacks" :key="i">
-                <FeedbackPreview :feedback="feedback" :selected="selected === feedback" @click="selectFeedback(feedback)"/>
+                <FeedbackPreview v-show="showFeedback(feedback)" :feedback="feedback" :selected="selected === feedback" @click="selectFeedback(feedback)"/>
             </template>
         </div>
     </div>
@@ -40,6 +42,15 @@ function selectFeedback(feedback: Feedback){
 }
 
 
+//Filtering
+const filterBy = ref('');
+
+//return true if feedback is allowed to be showed depending of the filter
+function showFeedback(feedback: Feedback){
+    return !filterBy.value || feedback.type === filterBy.value;
+}
+
+//Sorting
 const sortBy = ref('');
 
 watch(sortBy, (newSortBy) => {
