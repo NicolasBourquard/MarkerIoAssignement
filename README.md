@@ -33,5 +33,7 @@ Run the backend
 Run the frontend with vite
 `npm run dev`
 
+Open this link with the browser to see the app: http://localhost:5173/
+
 Optional: Generate random feedback in the database
 `npm run generate-feedbacks`
